@@ -1430,6 +1430,7 @@ Slider.prototype.slideTo=function(index){
     this.$scroller[0].style.webkitTransform="translateX("+(-window.innerWidth*index)+"px)";
 }
 
+/* 压缩图片 */
 function compressImage(filePath,type,pixel,success){
     var pre="";
     if(type=="png")
@@ -1475,6 +1476,7 @@ function compressImage(filePath,type,pixel,success){
         success(base64Str);
     }
 }
+/* 裁剪图片 */
 function cutImage(filePath,type,coordinate,success){
     var pre="";
     if(type=="png")
@@ -1514,7 +1516,7 @@ String.prototype.trimLeft=function(){
 String.prototype.trimRight=function(){
     return this.replace(/\s*$/,"");
 }
-String.prototype.trimLeft=function(){
+String.prototype.trim=function(){
     return this.trimLeft().trimRight();
 }
 String.prototype.simple=function(num){
@@ -1611,7 +1613,6 @@ function handleXMLString(str){
 			  .replace(/'/g,"&apos;");
 }
 document.addEventListener("deviceready",function(){
-	
 	if(jsict.ws){
 		jsict.ws.call=function(success,error,option){
 			if(option.nameSpace)
