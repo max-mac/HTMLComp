@@ -1624,3 +1624,14 @@ document.addEventListener("deviceready",function(){
 		}
 	}
 },false);
+
+(function(){
+	var attrs=["src","name","href"];
+	for(var i=0;i<attrs.length;i++){
+		$.fn[attrs[i]]=function(attr){
+			return function(value){
+				this.attr(attr,value);
+			}
+		}(attrs[i]);
+	}
+})();
