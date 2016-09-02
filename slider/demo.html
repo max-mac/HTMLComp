@@ -10,9 +10,6 @@
 				$.mobile.defaultPageTransition="none";
 				$.mobile.page.prototype.options.domCache = true;
 			});
-			$.fn.live=function(event,handler){
-				$(document).on(event,this.selector,handler);
-			}
 		</script>
 		<script src="../jquery.mobile.min.js"></script>
 		
@@ -25,7 +22,7 @@
 			<script>
 				$("#demoPage").live("pageshow",function(){
 					
-					initSlider({
+					new Slider({
 						id:"mySlider",
 						onSlide:function(index){
 							
@@ -33,44 +30,9 @@
 					});
 
 				});
-				function initSlider(option){
-					var $wrapper=$("#"+option.id).addClass("jszx-wrapper");
-					var $scroller=$("<div class='jszx-scroller'></div>").appendTo($wrapper);
-					var $slides=$wrapper.find(".slide").appendTo($scroller);
-					
-					$slides.width(window.innerWidth);
-					$scroller.width(window.innerWidth*$slides.length);
-					
-					var offset=0;
-					var index=0;
-					initScroll({
-						"wrapper": option.id,
-						"dir": "x",
-						"bounce": true,
-						"scrollBar": false,
-						"inertia": false,
-						"touchEnd": function(x){
-
-							if(x-offset<=-50){
-								offset=offset-window.innerWidth;
-								index++;
-							}else if(x-offset>=50){
-								offset=offset+window.innerWidth;
-								index--;
-							}
-
-							$scroller[0].style.webkitTransform="translateX("+offset+"px)";
-							
-							option.onSlide(index);
-						}
-					});
-				}
 			</script>
 			<style>
-				.max-slider .slide{
-					float:left;
-					width:100%;
-				}
+
 			</style>
 			<div class="page_header">
 				<div class="page_header_title">SLIDER</div>
