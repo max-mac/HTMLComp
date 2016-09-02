@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+		
+		<script src="../mobile-common.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="demoPage" data-dom-cache="true">
+			<script>
+				$("#demoPage").live("pageshow",function(){
+					$("#demoPage div[data-role=content]").height(window.innerHeight);//此处设置页面高度，真实开发中，这句不是必须的
+					
+					var $menu=$("#demoPage .quick-menu");
+					$menu.addEventListener("quickClick",function(){
+						$menu.toggleClass("active-quick-menu");
+					})
+					$menu.dragable();
+				});
+			</script>
+			<style>
+				.quick-menu{
+					position:absolute;
+					height:3em;
+					width:3em;
+					bottom:1em;
+					left:1em;
+				}
+				.quick-menu img{
+					position:absolute;
+					height:100%;
+					width:100%;
+					top:0;
+					left:0;
+					-webkit-transition:all 0.2s ease-out;
+					z-index:1;
+				}
+				.quick-menu .menu1,.quick-menu .menu2, .quick-menu .menu3{
+					z-index:0;
+				}
+				.active-quick-menu .menu-handler{
+					-webkit-transform:rotate(405deg);
+				}
+				.active-quick-menu .menu1,.active-quick-menu .menu2, .active-quick-menu .menu3{
+					-webkit-transform:rotate(360deg);
+				}
+				.active-quick-menu .menu1{
+					top:-6em;
+				}
+				.active-quick-menu .menu2{
+					top:-4em;
+					left:4em;
+				}
+				.active-quick-menu .menu3{
+					left:6em;
+				}
+				
+			</style>
+			<div data-role="content" style="padding:0;">
+				<div class="quick-menu">
+					<img src="pl.png" class="menu-handler">
+					<img src="ms.png" class="menu1">
+					<img src="ph.png" class="menu2">
+					<img src="ch.png" class="menu3">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="stylesheet" href="../jquery.mobile.min.css" />
+		<script src="../jquery.min.js"></script>
+		<script>
+			$(document).bind("mobileinit", function(){
+				$.mobile.defaultPageTransition="none";
+				$.mobile.page.prototype.options.domCache = true;
+			});
+			$.fn.live=function(event,handler){
+				$(document).on(event,this.selector,handler);
+			}
+		</script>
+		<script src="../jquery.mobile.min.js"></script>
+		
+		<link rel="stylesheet" href="../mobile-common.css" />
+		<script src="../mobile-common.js"></script>
+		
+		<link rel="stylesheet" href="SimpleTree.css" />
+		<script src="SimpleTree.js"></script>
+		
+	</head>
+	<body>
+		<div data-role="page" id="demoPage" data-dom-cache="true">
+			<script>
+				$("#demoPage").live("pageshow",function(){
+					var data=[
+						{
+							"text":"费用查询",
+							"children":[
+								{
+									"text":"账单查询"
+								},
+								{
+									"text":"清单查询"
+								},
+								{
+									"text":"套餐使用情况查询"
+								}
+							]						
+						},
+						{
+							"text":"充值缴费",
+							"children":[
+								{
+									"text":"网银充值"
+								},
+								{
+									"text":"充值卡充值"
+								},
+								{
+									"text":"流量卡充值"
+								}
+							]						
+						},
+						{
+							"text":"水电煤缴费"					
+						}
+					]
+					var tree=new SimpleTree({
+						"id":"tree",
+						"data":data,
+						"imgUrl":["arrow1.png","arrow2.png","arrow3.png"],
+						"onclick":function(node){}
+					});
+					tree.activeNode("充值缴费 流量卡充值");
+					
+					setTimeout(function(){
+						tree.reset();
+					},3000);
+				});
+
+			</script>
+			<style>
+			</style>
+			<div data-role="content" style="padding:0;">
+				<div id="tree">
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

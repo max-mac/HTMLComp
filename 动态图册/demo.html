@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="stylesheet" href="../jquery.mobile.min.css" />
+		<script src="../jquery.min.js"></script>
+		<script>
+			$(document).bind("mobileinit", function(){
+				$.mobile.defaultPageTransition="none";
+				$.mobile.page.prototype.options.domCache = true;
+			});
+			$.fn.live=function(event,handler){
+				$(document).on(event,this.selector,handler);
+			}
+		</script>
+		<script src="../jquery.mobile.min.js"></script>
+		
+		<link rel="stylesheet" href="../mobile-common.css" />
+		<script src="../mobile-common.js"></script>
+		
+		<link rel="stylesheet" href="dynamicPic.css" />
+		<script src="dynamicPic.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="demoPage">
+			<script>
+				$("#demoPage").live("pageshow",function(){
+					var pics=["images/j1.jpg","images/j2.jpg","images/tx1.png","images/code1.png"];
+					var markers=["images/d_gray.png","images/d_green.png"]
+					var thumbnailControl=["images/right1.png","images/right2.png"]
+					var text=["图1","图2"];
+					var dp=new DynamicPic({
+						"id": "dynamicPic1", //id，必须
+						"pics": pics, //图片URL的数组，必须
+						"markers": markers, //标识URL的数组，元素0为非当前图片标识，元素1为当前图片标识，默认URL为"images/d_gray.png"和"images/d_green.png"
+						//"text": text,
+						"width": window.innerWidth, //默认为window.innerWidth
+						"height": window.innerWidth*3/8, //默认为window.innerWidth*9/16
+						"stretch": false,
+						"timer": "3000", //默认为5000
+						"onClick": function(index){
+							dp.back(2);
+						},
+						"onChange": function(index){
+							//alert("这是第"+(index+1)+"张图片");
+						},
+						//"autoSlide": true,
+						"thumbnail": true,
+						"thumbnailCount": 4,
+						"thumbnailControl":thumbnailControl,
+						"loop":true
+					});
+
+				});
+			</script>
+			<style>
+
+			</style>
+			<div class="page_content">
+				<div id="dynamicPic1"></div>
+			</div>
+		</div>
+	</body>
+</html>

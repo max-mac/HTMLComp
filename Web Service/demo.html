@@ -1,0 +1,68 @@
+
+<html>	
+<head>
+	<link rel="stylesheet" href="../jquery.mobile.min.css" />
+	<script src="../jquery.min.js"></script>
+	<script>
+		$(document).bind("mobileinit", function(){
+			$.mobile.defaultPageTransition="none";
+			$.mobile.page.prototype.options.domCache = true;
+		});
+		$.fn.live=function(event,handler){
+			$(document).on(event,this.selector,handler);
+		}
+	</script>
+	<script src="../jquery.mobile.min.js"></script>
+	<script src="../mobile-common.js"></script>
+	<script>
+		/* webservice */
+		function tykd_webservice(success,error,options){
+
+			var paramsXML=convertObjectToXML(options.params,"ns1");
+			
+			var soapContent='<?xml version="1.0" encoding="utf-8"?>'
+						   +'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.sttri.com.cn/ns1MobileServices/">'
+						   +	'<soapenv:Body>'
+						   +		'<ns1:'+options.methodName+'>'
+						   +			paramsXML
+						   +		'</ns1:'+options.methodName+'>'
+						   +	'</soapenv:Body>'
+						   +'</soapenv:Envelope>';
+
+			$.ajax({
+				url: "http://www.189eyes.com:9000/cxf/MobileService",
+				type: "POST",
+				dataType: "xml",
+				contentType: "text/xml; charset=utf-8",
+				data: soapContent,
+				timeout: 5000,
+				success: success,
+				error: error
+			});
+			
+			return false;
+		}
+		function callWebService(){
+
+			var options={
+				methodName:"userLoginReq",
+				params:{
+					Account:"hxcs",
+					Password:"189eyes",
+					Version:"1.0",
+					Imsi:"1",
+					ClientType:"2",
+					ProductType:"1"
+			   }
+			};
+			
+			tykd_webservice(function(data){$("body").text(data);},function(){},options);
+		}
+
+
+	</script>
+</head>
+<body onload="callWebService();">
+	
+</body>
+</html>

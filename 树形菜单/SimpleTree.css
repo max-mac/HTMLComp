@@ -1,0 +1,62 @@
+.simple_tree{
+	position:relative;
+	color:#fff;
+	text-shadow:none;
+}
+.simple_tree_node{
+	position:relative;
+	height:3em;
+	
+	display : -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: center;	
+}
+.simple_tree_node>img{
+	position:absolute;
+	width:1.6em;
+	height:1.6em;
+	right:1em;
+	top:0.7em;
+}
+.simple_tree_node>img[name=arrow2]{
+	display:none;
+}
+.simple_tree_node_active>img[name=arrow1]{
+	display:none;
+}
+.simple_tree_node_active>img[name=arrow2]{
+	display:inline;
+}
+.simple_tree_node_panel{
+	position:relative;
+	height:0;
+	overflow:hidden;
+	-webkit-transition:all 0.2s ease-out;
+}
+.simple_tree_node{
+	text-indent:1em;
+}
+.simple_tree_node_panel>.simple_tree_node{
+	text-indent:2em;
+}
+.simple_tree_node_panel>.simple_tree_node_panel>.simple_tree_node{
+	text-indent:3em;
+}
+.simple_tree_node_panel>.simple_tree_node_panel>.simple_tree_node_panel>.simple_tree_node{
+	text-indent:4em;
+}
+.simple_tree_node{
+	background:-webkit-gradient(linear, left top, left bottom, from(#2E3132), to(#2C2E2E));
+	-webkit-box-shadow:0px 1px 1px 0px #1F2121 inset;
+}
+.simple_tree_node_panel>.simple_tree_node{
+	background:-webkit-gradient(linear, left top, left bottom, from(#414445), to(#414445));
+	-webkit-box-shadow:0px 1px 1px 0px #2E3132 inset;
+}
+.simple_tree_node_panel>.simple_tree_node_panel>.simple_tree_node{
+	background:-webkit-gradient(linear, left top, left bottom, from(#999), to(#aaa));
+	-webkit-box-shadow:0px 1px 1px 0px #888 inset;
+}
+.active_tree_node, .simple_tree_node_panel>.active_tree_node{
+	background:-webkit-gradient(linear, left top, left bottom, from(#77d916), to(#64a608));
+}
