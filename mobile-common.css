@@ -31,7 +31,6 @@
 	position:relative;
 	top:0.75em;
 	color:#fff;
-	text-shadow:0 -1px 1px #000;
 }
 /*icon-left*/
 .jszx-bar-icon-left{
@@ -64,7 +63,6 @@
 	line-height:1em;
 	top:-1em;
 	color:#fff;
-	text-shadow:0 -1px 1px #000;
 }
 /*icon-none*/
 .jszx-bar-icon-none{
@@ -84,7 +82,6 @@
 	position:relative;
 	top:0.8em;
 	color:#fff;
-	text-shadow:0 -1px 1px #000;
 }
 /*split*/
 .jszx-bar-split{
@@ -159,7 +156,6 @@
 	font-size:1.20em;
 	font-family:'黑体';
 	text-align:center;
-	text-shadow:0 -1px 1px #000;
 }
 .page_header .left_button { /* header 左边按钮 */
 	position:absolute;
@@ -170,7 +166,6 @@
 	z-index:1;
 	
 	color:#fff;
-	text-shadow:0 -1px 1px #000;
 	
 	display:-webkit-box;
 	-webkit-box-orient:horizontal;
@@ -189,7 +184,6 @@
 	z-index:1;
 	
 	color:#fff;
-	text-shadow:0 -1px 1px #000;
 	
 	display:-webkit-box;
 	-webkit-box-orient:horizontal;	
@@ -307,7 +301,6 @@
 	font-weight:bold;
 	font-family:'黑体';
 	color:#FFF;
-	text-shadow:0 -1px 1px #000;
 	background:-webkit-gradient(linear, left top, left bottom, from(#8BB8D9), to(#244CBE));
 	border-radius:5px 5px 0 0;
 	padding:0.5em 0;
