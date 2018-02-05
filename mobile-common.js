@@ -1282,8 +1282,11 @@ function getUniqueInteger(){
 		var $alert=$(html).appendTo(".ui-page-active");
 
 		$alert.find(".max-confirm-button").bind("click",function(){
-			if(btnFunction)
-				btnFunction.call();
+			if(btnFunction) {
+				var result=btnFunction();
+				if(result===false)
+					return;
+			}
 			$(".max-alert").remove();
 		});
 	}
@@ -1308,13 +1311,19 @@ function getUniqueInteger(){
 		var $confirm=$(html).appendTo(".ui-page-active");
 
 		$confirm.find(".max-confirm-button").bind("click",function(){
-			if(btnFunction1)
-				btnFunction1.call();
+			if(btnFunction1) {
+				var result=btnFunction1();
+				if(result===false)
+					return;
+			}
 			$(".max-confirm").remove();
 		});
 		$confirm.find(".max-cancel-button").bind("click",function(){
-			if(btnFunction2)
-				btnFunction2.call();
+			if(btnFunction2) {
+				var result=btnFunction2();
+				if(result===false)
+					return;
+			}
 			$(".max-confirm").remove();
 		});
 	}
@@ -1338,14 +1347,20 @@ function getUniqueInteger(){
         var $confirm=$(html).appendTo(".ui-page-active");
 
         $confirm.find(".max-confirm-button2").bind("click",function(){
-            if(btnFunction1)
-                btnFunction1.call();
-            $(".max-confirm2").remove();
+			if(btnFunction1) {
+				var result=btnFunction1();
+				if(result===false)
+					return;
+			}
+			$(".max-confirm2").remove();
         });
         $confirm.find(".max-cancel-button2").bind("click",function(){
-            if(btnFunction2)
-                btnFunction2.call();
-            $(".max-confirm2").remove();
+			if(btnFunction2) {
+				var result=btnFunction2();
+				if(result===false)
+					return;
+			}
+			$(".max-confirm2").remove();
         });
     }
     window.hideConfirm2=function(){
