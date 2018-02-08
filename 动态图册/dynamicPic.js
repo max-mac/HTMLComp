@@ -42,7 +42,7 @@ function DynamicPic(options){
 		
 		var html="<div class='jszx-dp-thumbnail' rightThumb='"+((options.pics.length>thumbnailCount)?(options.pics.length-thumbnailCount):"0")+"'>"
 				+	"<img src='"+options.thumbnailControl[1]+"' class='thumbControl left' style='-webkit-transform:rotate(180deg);'>"
-				+	"<div style='display:inline;'><div id='"+options.id+"Wrapper' class='jszx-wrapper'><div id='"+options.id+"Scroller' class='jszx-scroller'>"
+				+	"<div style='display:inline-block;'><div id='"+options.id+"Wrapper' class='jszx-wrapper'><div id='"+options.id+"Scroller' class='jszx-scroller'>"
 				+	"</div></div></div>"
 				+	"<img src='"+options.thumbnailControl[((options.pics.length>thumbnailCount)?"0":"1")]+"' class='thumbControl right'>"
 				+"</div>";

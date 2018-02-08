@@ -1,4 +1,3 @@
-
 <html>	
 <head>
 	<link rel="stylesheet" href="../jquery.mobile.min.css" />
@@ -16,15 +15,13 @@
 		function callWebService(){
 
 			var options={
-				methodName:"userLoginReq",
+				serviceUrl: "http://www.webxml.com.cn/WebServices/WeatherWebService.asmx",
+				methodName: "getWeatherbyCityName ",
+				namespace: "http://WebXml.com.cn/",
 				params:{
-					Account:"hxcs",
-					Password:"189eyes",
-					Version:"1.0",
-					Imsi:"1",
-					ClientType:"2",
-					ProductType:"1"
-			   }
+					theCityName: "南京"
+			   },
+			   version: "1.1"
 			};
 			
 			webservice(function(data){
